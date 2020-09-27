@@ -1,0 +1,16 @@
+First Name, Second Name, Phone Number,Address, Website URL
+Vladimir, Bazhanov, +79375295624, Pushkina 46, http://flatstack.com
+Ivan, Ivanov, +7 977 77 77 777, Unknown street 46, http://google.com
+Petr, Sergeev, +79376547896, Pobedy 105, http://yandex.ru
+Sergey, Terentev, +79446899881, Pobedy 10, http://yandex.ru
+Mihail, Polnih, +79998344322, Poletov 11, http://yandex.ru
+Anatoliy, Bernt, +79112342323, Pobedy 14, http://yandex.ru
+Anna, Krasgen, +79664534346, Pobedy 1, http://yandex.ru
+Dmitriy, Kin, +79777875656, Pushkina 2, http://yandex.ru
+Den, Filipov, +79902098877, Pobedy 114, http://yandex.ru
+Alex, Chykchiev, +79546765554, Gogolay 195, http://yandex.ru
+Fedor, Lem, +79566778771, Pobedy 205, http://yandex.ru
+Luther, Letov, +79714354566, Tolstogo 7, http://yandex.ru
+Nikita, Morskoy, +79894455454, Pobedy 5, http://yandex.ru
+Vadim, Sineborodov, +79111112222, Pobedy 22, http://yandex.ru
+Gleb, Kystiv, +79788887777, Pobedy 44, http://yandex.ru
