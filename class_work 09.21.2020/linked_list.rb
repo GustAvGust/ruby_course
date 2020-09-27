@@ -31,6 +31,18 @@ class Linked_list
 		#reduce
 		str
 	end
+
+	def [](n)
+		node = @head
+		(n - 1).times do
+			node = node.next_node()
+		end
+		return node
+	end
+
+	def []=(n, value)
+		self[n].value = value
+	end
 end
 
 hd = Node.new(14)
@@ -42,3 +54,7 @@ puts(ls)
 puts(ls.max)
 puts(ls.min)
 puts(ls.sort)
+
+puts(ls[2])
+ls[2] = 44
+puts(ls)
