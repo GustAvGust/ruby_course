@@ -1,0 +1,19 @@
+<div>
+  <ul>
+    <a href="/todos/new">Create new todo</a>
+    <% @results.each do |item| %>
+      <li>
+        
+    <form method="POST" action="/todos">
+      <input type="text" name="custom_method" style="display: none" value="DELETE">
+      <input type="text" name="id" style="display: none" value="<%= item['id'] %>">
+      <a href="todos/<%=item['id']%>">
+            <%= item["title"] %>
+          </a>
+      <input type="submit" value="delete">
+      <a href="/todos/<%=item['id']%>/edit">Update</a>
+    </form>
+      </li>
+    <% end %>
+  </ul>
+</div>
