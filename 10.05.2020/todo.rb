@@ -25,14 +25,34 @@ class ToDo
   	todo
   end
 
-	def self.all(conn)
-		arr_hashs = conn.exec( "SELECT * FROM todos" )
-		res_hashs = []
+  def self.arr_map(arr_hashs)
+  	res_hashs = []
 		arr_hashs.each do |el| 
 			todo = ToDo.new(el['title'])
 			todo.id = el['id']
 			res_hashs << todo
 		end
 		res_hashs
+  end
+
+	def self.all(conn)
+		arr_hashs = conn.exec( "SELECT * FROM todos" )
+		arr_map(arr_hashs)
+	end
+
+	def self.where(conn, params)
+		sql = "SELECT id, title FROM todos where "
+		params.each do |param|
+			if (param[1].class == Integer) 
+				sql += " #{param[0]} = #{param[1]} and"
+			else
+				sql += " #{param[0]} = '#{param[1]}' and"
+			end
+		end
+		#sql_length_needed = sql.size - 4
+		#sql = sql.slice(0, sql_length_needed) + ';'
+		sql = sql.chomp(" and") + ';'
+		arr_hashs = conn.exec(sql)
+		arr_map(arr_hashs)
 	end
 end

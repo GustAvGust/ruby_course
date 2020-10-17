@@ -61,6 +61,9 @@ post '/todos/:id' do
 	redirect to("/todos/#{id}")
 end
 
+get '/test' do
+	ToDo.where(conn, {id: 2, title: "nsldnflsdnf"})
+end
 
 # delete "/todos/:id" do
 # 	res = conn.exec("delete from todos where id = #{params['id']}")
