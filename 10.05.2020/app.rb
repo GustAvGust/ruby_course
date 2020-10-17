@@ -2,6 +2,7 @@ require 'pg'
 require 'sinatra'
 require 'byebug'
 require 'sinatra/reloader' if development?
+require './todo.rb'
 
 configure {set :server, :puma}
 
@@ -12,7 +13,8 @@ get '/' do
 end
 
 get '/todos' do
-	@results = conn.exec( "SELECT * FROM todos" )
+	@results = ToDo.all(conn)
+	#@results = conn.exec( "SELECT * FROM todos" )
 	#conn.exec("SELECT * from todos").reduce.to_s
 	erb :index
 end
@@ -22,31 +24,38 @@ get '/todos/new' do
 end
 
 get '/todos/:id/edit' do
-	@results = conn.exec("select * from todos where id='#{params['id']}'")[0]
+	@results = ToDo.findById(conn, params['id'])
+	# @results = conn.exec("select * from todos where id='#{params['id']}'")[0]
 	erb :edit
 end
 
 get '/todos/:id' do
-	@results = conn.exec("select * from todos where id='#{params['id']}'")[0]
+	@results = ToDo.findById(conn, params['id'])
+	# @results = conn.exec("select * from todos where id='#{params['id']}'")[0]
 	#"id is #{params['id']}"
 	erb :show
 end
 
 post '/todos' do
 	if params['custom_method'] == 'DELETE'
-		@results = conn.exec("delete from todos where id = #{params['id']}")
+		ToDo.findById(conn, params['id']).delete(conn)
+		#res = conn.exec("delete from todos where id = #{params['id']}")
 		redirect to('/todos')
 	else
-		res = conn.exec("insert into todos(title) values('#{params['title']}') returning id")
-		id = res[0]['id']
-		redirect to("/todos/#{id}")
+		# res = conn.exec("insert into todos(title) values('#{params['title']}') returning id")
+		# id = res[0]['id']
+		todo = ToDo.new(params['title'])
+		todo.save(conn)
+		redirect to("/todos/#{todo.id}")
 	end
 end
 
 post '/todos/:id' do
 	id = params['id']
 	if params['custom_method'] == 'PUT'
-		@results = conn.exec("update todos set title='#{params['title']}' where id=#{id} returning id")
+		ToDo.findById(conn, id).update(conn, params['title'])
+		@results = id
+		# @results = conn.exec("update todos set title='#{params['title']}' where id=#{id} returning id")
 	end
 
 	redirect to("/todos/#{id}")

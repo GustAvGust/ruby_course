@@ -1,6 +1,6 @@
-<%= @results['title']%>
+<%= @results.title%>
 
-<form method="POST" action="/todos/<%= @results['id'] %>">
+<form method="POST" action="/todos/<%= @results.id %>">
 	<input type="text" name="custom_method" style="display: none" value="PUT">
 	<label for="title">Title:</label>
 	<input type="text" name="title">
