@@ -24,13 +24,13 @@ get '/todos/new' do
 end
 
 get '/todos/:id/edit' do
-	@results = ToDo.findById(conn, params['id'])
+	@results = ToDo.find_by_id(conn, params['id'])
 	# @results = conn.exec("select * from todos where id='#{params['id']}'")[0]
 	erb :edit
 end
 
 get '/todos/:id' do
-	@results = ToDo.findById(conn, params['id'])
+	@results = ToDo.find_by_id(conn, params['id'])
 	# @results = conn.exec("select * from todos where id='#{params['id']}'")[0]
 	#"id is #{params['id']}"
 	erb :show
@@ -38,7 +38,7 @@ end
 
 post '/todos' do
 	if params['custom_method'] == 'DELETE'
-		ToDo.findById(conn, params['id']).delete(conn)
+		ToDo.find_by_id(conn, params['id']).delete(conn)
 		#res = conn.exec("delete from todos where id = #{params['id']}")
 		redirect to('/todos')
 	else
@@ -53,7 +53,7 @@ end
 post '/todos/:id' do
 	id = params['id']
 	if params['custom_method'] == 'PUT'
-		ToDo.findById(conn, id).update(conn, params['title'])
+		ToDo.find_by_id(conn, id).update(conn, params['title'])
 		@results = id
 		# @results = conn.exec("update todos set title='#{params['title']}' where id=#{id} returning id")
 	end
@@ -62,7 +62,8 @@ post '/todos/:id' do
 end
 
 get '/test' do
-	ToDo.where(conn, {id: 2, title: "nsldnflsdnf"})
+	@result = ToDo.where(conn, {id: 2})
+	erb :test
 end
 
 # delete "/todos/:id" do

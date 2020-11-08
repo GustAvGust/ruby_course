@@ -1,0 +1,11 @@
+<p>
+  <strong>Title:</strong>
+  <%= @task.header %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @task.description %>
+</p>
+<%= link_to 'Edit', edit_list_task_path(params[:list_id], @task)%>
+<%= link_to 'Back', list_tasks_path %>

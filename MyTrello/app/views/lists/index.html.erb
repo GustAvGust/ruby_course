@@ -1,0 +1,19 @@
+<h1>Lists of tasks</h1>
+<%= link_to 'New list', new_list_path %>
+<hr>
+<table>
+	<tr>
+		<th>Header</th>
+	</tr>
+
+	<% @lists.each do |list| %>
+		<tr>
+			<td><%= list.header %></td>
+			<td><%= link_to 'Show', list_tasks_path(list) %></td>
+			<td><%= link_to 'Edit', edit_list_path(list) %></td>
+			<td><%= link_to 'Destroy', list_path(list),
+			method: :delete,
+			data: { confirm: 'Are you sure?' } %></td>
+		</tr>
+	<% end %>
+</table>

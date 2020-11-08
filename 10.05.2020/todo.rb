@@ -18,7 +18,7 @@ class ToDo
   		conn.exec("update todos set title='#{title}' where id=#{@id}")
   end
 
-  def self.findById(conn, id)
+  def self.find_by_id(conn, id)
   	res = conn.exec("select * from todos where id=#{id}")[0]
   	todo = self.new(res['title'])
   	todo.id = id
