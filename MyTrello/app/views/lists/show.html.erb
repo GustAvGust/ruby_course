@@ -1,7 +1,0 @@
-<h1><%= @list.header %></h1>
-<ul>
-	<% @list.tasks.each do |task| %>
-		<li><%= task.header %> <%= link_to 'Show', list_task_path(@list, task) %></li>
-	<% end %>
-</ul>
-<%= link_to 'Back', lists_path %>

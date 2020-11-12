@@ -1,0 +1,10 @@
+p
+  strong
+    | Title:
+  = @task.header
+p
+  strong
+    | Text:
+  = @task.description
+= link_to 'Edit', edit_list_task_path(params[:list_id], @task)
+= link_to 'Back', list_tasks_path

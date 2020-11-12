@@ -10,25 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_08_130829) do
-
+ActiveRecord::Schema.define(version: 20_201_108_130_829) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "lists", force: :cascade do |t|
-    t.string "header"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'lists', force: :cascade do |t|
+    t.string 'header'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  create_table "tasks", force: :cascade do |t|
-    t.string "header"
-    t.text "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "list_id", null: false
-    t.index ["list_id"], name: "index_tasks_on_list_id"
+  create_table 'tasks', force: :cascade do |t|
+    t.string 'header'
+    t.text 'description'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.bigint 'list_id', null: false
+    t.index ['list_id'], name: 'index_tasks_on_list_id'
   end
 
-  add_foreign_key "tasks", "lists"
+  add_foreign_key 'tasks', 'lists'
 end

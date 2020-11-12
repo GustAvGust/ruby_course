@@ -1,23 +1,23 @@
 class ListsController < ApplicationController
-	def index
-		@lists = List.all
+  def index
+    @lists = List.actual
   end
 
   def show
-  	@list = List.find(params[:id])
+    @list = List.find(params[:id])
   end
 
   def new
-  	@list = List.new
+    @list = List.new
   end
 
   def edit
-  	@list = List.find(params[:id])
+    @list = List.find(params[:id])
   end
 
   def create
-  	@list = List.new(list_params)
-  	if @list.save
+    @list = List.new(list_params)
+    if @list.save
       redirect_to @list
     else
       render 'new'
@@ -25,7 +25,7 @@ class ListsController < ApplicationController
   end
 
   def update
-  	@list = List.find(params[:id])
+    @list = List.find(params[:id])
     if @list.update(list_params)
       redirect_to @list
     else
@@ -34,14 +34,15 @@ class ListsController < ApplicationController
   end
 
   def destroy
-  	@list = List.find(params[:id])
+    @list = List.find(params[:id])
     @list.destroy
 
     redirect_to lists_path
   end
 
   private
-  	def list_params
-  		params.require(:list).permit(:header)
-  	end
+
+  def list_params
+    params.require(:list).permit(:header)
+  end
 end

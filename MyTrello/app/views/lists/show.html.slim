@@ -1,0 +1,8 @@
+h1
+  = @list.header
+ul
+  - @list.tasks.each do |task|
+    li
+      = task.header
+      = link_to 'Show', list_task_path(@list, task)
+= link_to 'Back', lists_path

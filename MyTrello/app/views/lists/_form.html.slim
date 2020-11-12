@@ -1,0 +1,16 @@
+= form_with scope: :list, model: @list, local: true do |form|
+  - if @list.errors.any?
+    #error_explanation
+      h2
+        = pluralize(@list.errors.count, "error")
+        |  prohibited this list from being saved: 
+      ul
+        - @list.errors.full_messages.each do |msg|
+          li
+            = msg
+  p
+    = form.label :header
+    br
+    = form.text_field :header
+  p
+    = form.submit

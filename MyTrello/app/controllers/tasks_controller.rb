@@ -1,11 +1,12 @@
 class TasksController < ApplicationController
+  before_action :set_list, only: %i[index new edit]
+
   def index
-    @list = List.find(params[:list_id])
-  	@tasks = @list.tasks
+    @tasks = @list.tasks
   end
 
   def show
-  	@task = Task.find(params[:id])
+    @task = Task.find(params[:id])
   end
 
   def new
@@ -17,11 +18,8 @@ class TasksController < ApplicationController
   end
 
   def create
-    task_p_with_list_id = task_params
-    task_p_with_list_id[:list_id] = params[:list_id]
-  	
-    @task = Task.new(task_p_with_list_id)
-  	if @task.save
+    @task = Task.new(task_params.merge(list_id: params[:list_id]))
+    if @task.save
       redirect_to list_task_path(params[:list_id], @task)
     else
       render 'new'
@@ -45,7 +43,12 @@ class TasksController < ApplicationController
   end
 
   private
-  	def task_params
-  		params.require(:task).permit(:header, :description, :list_id)
-  	end
+
+  def task_params
+    params.require(:task).permit(:header, :description)
+  end
+
+  def set_list
+    @list = List.find(params[:list_id])
+  end
 end

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   resources :lists do
-  	resources :tasks
+    resources :tasks
   end
 end
