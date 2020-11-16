@@ -1,4 +1,6 @@
 class ListsController < ApplicationController
+  
+  layout "lists"
   def index
     @lists = List.actual
   end

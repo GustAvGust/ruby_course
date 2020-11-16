@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: $gray--light;
+
+  &__menu {
+    display: flex;
+  }
+
+  &__link {
+    margin: 0 10px;
+    text-decoration: none;
+    padding: 4px 5px;
+    background: darken($white, 20%);
+    border-radius: 5px;
+
+
+    &--main {
+      border: 1px solid $gray;
+    }
+  }
+}
+
+.content {
+  padding: 30px 20px;
+}

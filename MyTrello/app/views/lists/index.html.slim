@@ -1,18 +1,15 @@
 h1
   | Lists of tasks
-= link_to 'New list', new_list_path
+= link_to 'New list', new_list_path, class: 'button'
 hr
-table
-  tr
-    th
-      | Header
+
+ul.lists-list
   - @lists.each do |list|
-    tr
-      td
-        = list.header
-      td
-        = link_to 'Show', list_tasks_path(list)
-      td
-        = link_to 'Edit', edit_list_path(list)
-      td
-        = link_to 'Destroy', list_path(list),method: :delete, data: { confirm: 'Are you sure?' }
+      
+      li.lists-list__item
+        = link_to list.header, list_tasks_path(list)
+        .lists-list__icons
+        	= link_to edit_list_path(list), class: 'lists-list__icon' do
+        		= image_tag 'edit.svg'
+        	= link_to list_path(list),method: :delete, data: { confirm: 'Are you sure?' }, class: 'lists-list__icon' do
+        		= image_tag 'destroy.svg'

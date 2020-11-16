@@ -1,0 +1,56 @@
+body {
+  background-color: $white;
+  color: #333;
+  margin: 0;
+  font-family: verdana, arial, helvetica, sans-serif;
+}
+
+body, p, ol, ul, td {
+  font-size: 13px;
+  line-height: 18px;
+}
+
+a {
+  color: $black;
+  
+  &:hover {
+    color: lighten($black, 30%);
+    text-decoration: none;
+  }
+}
+
+
+th {
+  padding-bottom: 5px;
+}
+
+td {
+  padding: 0 5px 7px;
+}
+
+div.field,
+div.actions {
+  margin-bottom: 10px;
+}
+
+
+.message {
+  &:not(:empty) {
+    padding: 5px;
+    border: 1px solid;
+  }
+
+  &--notice {
+    color: $green;
+    background-color: lighten($green, 50%);
+  }
+  
+  &--alert {
+    color: $red;
+    background-color: lighten($red, 50%);
+  }
+}
+
+label {
+  display: block;
+}
