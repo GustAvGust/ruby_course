@@ -1,0 +1,31 @@
+.tasks-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0 -10px;
+  
+    &__item {
+      position: relative;
+      list-style: none;
+      padding: 20px;
+      margin: 10px;
+      border: 1px solid $gray--light;
+      border-radius: 5px;
+      box-shadow: 2px 2px 10px 0 rgba($black, 0.4);
+      min-width: 100px;
+    }
+  
+    &__icons {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    } 
+  
+    &__icon {
+      margin-left: 10px;
+  
+      img {
+        width: 13px;
+      }
+    }
+  }
